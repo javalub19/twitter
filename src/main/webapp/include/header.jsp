@@ -10,9 +10,16 @@
             <li class="nav-item active">
                 <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">Home <span class="sr-only">(current)</span></a>
             </li>
+
+            <c:choose>
+                <c:when test="${sessionScope.user != null}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/add-article.jsp">Dodaj artykuł</a>
+                    </li>
+                </c:when>
+            </c:choose>
+
             <li class="nav-item">
-
-
                 <c:choose>
                     <c:when test="${sessionScope.user == null}">
                         <a class="nav-link" href="${pageContext.request.contextPath}/login.jsp">Log in</a>
@@ -21,7 +28,6 @@
                         <a class="nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
                     </c:otherwise>
                 </c:choose>
-
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
