@@ -36,4 +36,9 @@ public class LoginServlet extends HttpServlet {
             resp.sendRedirect("login.jsp");
         }
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+    }
 }
