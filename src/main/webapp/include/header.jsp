@@ -30,3 +30,4 @@
         </form>
     </div>
 </nav>
+<jsp:include page="messages.jsp"/>
