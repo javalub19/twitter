@@ -12,7 +12,7 @@
           class="form-add-article" action="add-article" method="post">
         <label for="inputContent" class="sr-only">Treść</label>
         <textarea rows="10" id="inputContent" name="content" class="form-control" placeholder="Treść" required autofocus></textarea>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Wyślij</button>
 
     </form>
 </main>
