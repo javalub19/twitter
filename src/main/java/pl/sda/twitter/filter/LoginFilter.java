@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Collections;
+import java.util.ArrayList;
 
 @WebFilter(urlPatterns = "/add-article.jsp")
 public class LoginFilter implements Filter {
@@ -22,7 +22,15 @@ public class LoginFilter implements Filter {
         final HttpSession httpSession = httpRequest.getSession();
         if (user == null) {
             final HttpServletResponse httpResponse = (HttpServletResponse) response;
-            httpSession.setAttribute(messages, Collections.singletonList("Zaloguj się aby kontynuować"));
+            ArrayList<String> messagesList;
+            Object attribute = httpSession.getAttribute(messages);
+            if (attribute != null) {
+                messagesList = (ArrayList<String>) attribute;
+            } else {
+                messagesList = new ArrayList<>();
+            }
+            messagesList.add("Zaloguj się aby kontynuować");
+            httpSession.setAttribute(messages, messagesList);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
             requestDispatcher.forward(httpRequest, httpResponse);
         }
